@@ -1,6 +1,14 @@
 package java.io;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-@DefaultQualifier(NonNull.class)
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public class File implements java.io.Serializable, java.lang.Comparable<java.io.File> {
   private static final long serialVersionUID = 0;
   public final static char separatorChar = '/';

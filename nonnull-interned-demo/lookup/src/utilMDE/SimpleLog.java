@@ -2,8 +2,16 @@ package utilMDE;
 
 
 import java.util.Stack;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
-@DefaultQualifier(NonNull.class)
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public final class SimpleLog {
 
   public String indent_str = "";

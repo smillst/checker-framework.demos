@@ -3,6 +3,12 @@ package utilMDE;
 
 
 import java.util.*;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
 
 
 /**
@@ -52,7 +58,10 @@ import java.util.*;
  *
  **/
 
-@DefaultQualifier(NonNull.class)
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public class RandomSelector<T> {
 
     // Rep Invariant: values != null && values.size() <= num_elts &&

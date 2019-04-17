@@ -7,6 +7,12 @@ import java.util.*;
 import java.util.regex.*;
 import static utilMDE.MultiReader.Entry;
 import com.sun.javadoc.*;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
 
 /**
  * Lookup searches a set of files for information.  The user specifies
@@ -36,7 +42,10 @@ import com.sun.javadoc.*;
  * '\include{filename}'. <p>
  *
  **/
-@DefaultQualifier(NonNull.class)
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public class Lookup {
 
   /** Show detailed help information and exit. **/

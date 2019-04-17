@@ -1,6 +1,15 @@
 package java.lang;
 
-@DefaultQualifier(NonNull.class)
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
+
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public final class String implements java.io.Serializable, java.lang.Comparable<java.lang.String>, java.lang.CharSequence {
   private static final long serialVersionUID = 0;
   public final static java.util.Comparator<java.lang.String> CASE_INSENSITIVE_ORDER = (java.util.Comparator<java.lang.String>) new Object();

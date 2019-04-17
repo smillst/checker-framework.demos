@@ -4,6 +4,11 @@ package utilMDE;
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
 // TODO:
 // MultiReader has a public concept of "short entry", but I don't think that
@@ -34,7 +39,10 @@ import java.util.regex.*;
  * The syntax of each of these is customizable.
  * @see #get_entry() and @see #set_entry_start_stop(String,String)
  */
-@DefaultQualifier(NonNull.class)
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public class MultiReader implements Iterable<String>, @NonNull Iterator<@NonNull String> {
 
   /** Information about the current reader **/

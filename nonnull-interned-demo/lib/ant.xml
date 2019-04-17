@@ -124,7 +124,6 @@ ${line.separator}NOTE: Did you run 'ant touch-files'?"/>
     <sequential>
       <exec executable="ant" failonerror="false"
           resultproperty="property.ignore">
-        <arg line="-Dcompiler.lib=${compiler.lib}"/>
         <arg line="-Dchecker.lib=${checker.lib}"/>
         <arg line="-Ddaikon.lib=${daikon.lib}"/>
         <arg line="-Ddeps.lib=${deps.lib}"/>

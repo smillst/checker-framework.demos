@@ -9,6 +9,11 @@ import java.lang.annotation.*;
 import com.sun.javadoc.RootDoc;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.FieldDoc;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.DefaultQualifiers;
+import org.checkerframework.framework.qual.TypeUseLocation;
 
 /**
  * Class that reads and sets command line options.  The Option
@@ -75,7 +80,10 @@ import com.sun.javadoc.FieldDoc;
  *  non-options as an array
  * </ul>
  **/
-@DefaultQualifier(NonNull.class)
+@DefaultQualifiers({
+  @DefaultQualifier(value = NonNull.class, locations = TypeUseLocation.ALL),
+  @DefaultQualifier(value = Nullable.class, locations = TypeUseLocation.TYPE_DECLARATION)
+})
 public class Options {
 
   /** Information about an option **/
@@ -732,7 +740,7 @@ public class Options {
     for (OptionInfo oi : options) {
       @Nullable ClassDoc opt_doc = find_class_doc (doc, oi.get_declaring_class());
       if (opt_doc == null) continue;
-      
+
       for (FieldDoc fd : opt_doc.fields()) {
         if (fd.name().equals (oi.long_name)) {
           oi.jdoc = fd.commentText();

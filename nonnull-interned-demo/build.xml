@@ -13,8 +13,10 @@
     <echo message="Running Nullness on the checker demo"/>
     <test-project project="checkers"/>
 
+<!-- TODO: adapt for new Interning Checker.
     <echo message="Running Interning on the daikon demo"/>
     <test-project project="daikon"/>
+-->
 
     <echo message="Running Nullness on the daikon demo"/>
     <test-project project="junit"/>
